@@ -102,12 +102,12 @@ const Form = () => {
           placeholder="Search..."
           value={term}
           onChange={(e) => setTerm(e.target.value)}
-          className="w-full p-4 rounded-md border-2 border-gray-300"
+          className="w-full p-4 rounded-md border-2 border-gray-300 bg-black text-red-600 font-bold"
         />
 
         <button
           type="submit"
-          className="p-4 rounded-md border-2 border-gray-300 uppercase"
+          className="p-4 rounded-md border-2 border-gray-300 uppercase font-bold bg-black"
         >
           search
         </button>
