@@ -1,7 +1,7 @@
 import { useState } from "react";
 import * as cheerio from "cheerio";
 import axios from "axios";
-import { ITEM_URL, TABLE_URL, selectors } from "../constants";
+import { API_URL, selectors } from "../constants";
 import List from "./list";
 
 interface attachmentsLinks {
@@ -34,7 +34,7 @@ const Form = () => {
       setIsLoaded(false);
 
       const getDetails = async (id: string) => {
-        const urlResponse = await axios.get(`${ITEM_URL}/${id}`);
+        const urlResponse = await axios.get(`${API_URL}/api/scrape/${id}`);
         const $ = cheerio.load(urlResponse.data);
 
         const summary = $(selectors.SUMMARY).html();
@@ -63,7 +63,10 @@ const Form = () => {
       };
 
       const getData = async (id: string) => {
-        const urlResponse = await axios.get(TABLE_URL);
+        const urlResponse = await axios.get(`${API_URL}/api/scrape`);
+
+        console.log("urlResponse", urlResponse);
+
         const $ = cheerio.load(urlResponse.data);
 
         const targetRow = $(`td:contains(${id})`).parent();
